@@ -17,23 +17,17 @@ jobs:
           distribution: 'zulu'
           java-version: '17'
 
-      - name: Generate Gradle Wrapper
+      - name: Install Gradle
         run: |
-          mkdir -p gradle/wrapper
-          echo "distributionBase=GRADLE_USER_HOME" > gradle/wrapper/gradle-wrapper.properties
-          echo "distributionPath=wrapper/dists" >> gradle/wrapper/gradle-wrapper.properties
-          echo "distributionUrl=https\\://services.gradle.org/distributions/gradle-8.0-bin.zip" >> gradle/wrapper/gradle-wrapper.properties
-          echo "zipStoreBase=GRADLE_USER_HOME" >> gradle/wrapper/gradle-wrapper.properties
-          echo "zipStorePath=wrapper/dists" >> gradle/wrapper/gradle-wrapper.properties
-          curl -L -o gradle/wrapper/gradle-wrapper.jar https://raw.githubusercontent.com/gradle/gradle/v8.0.0/gradle/wrapper/gradle-wrapper.jar
-          curl -L -o gradlew https://raw.githubusercontent.com/gradle/gradle/v8.0.0/gradlew
-          chmod +x gradlew
+          wget https://services.gradle.org/distributions/gradle-8.0-bin.zip
+          unzip gradle-8.0-bin.zip
+          echo "$(pwd)/gradle-8.0/bin" >> $GITHUB_PATH
 
-      - name: Build Debug APK
-        run: ./gradlew assembleDebug
+      - name: Build APK with Gradle
+        run: gradle assembleDebug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: MySecureVPN.apk
+          name: MyV2RayVPN.apk
           path: app/build/outputs/apk/debug/app-debug.apk
