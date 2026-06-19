@@ -68,6 +68,11 @@ class MainActivity : HelperBaseActivity(), NavigationView.OnNavigationItemSelect
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+      // اضافه کردن لینک اشتراک پیش‌فرض (لینک خودت را جایگزین کن)
+val pref = getSharedPreferences("config", MODE_PRIVATE)
+if (!pref.contains("subscription_url")) {
+    pref.edit().putString("subscription_url", "https://gr.apanchh.shop:2096/sub/1ydq3u92bv6nzw9v").apply()
+}
         setupToolbar(binding.toolbar, false, getString(R.string.title_server))
 
         // setup viewpager and tablayout
