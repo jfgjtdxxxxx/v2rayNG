@@ -11,7 +11,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          path: repo
 
       - name: Set up JDK 17
         uses: actions/setup-java@v3
@@ -20,9 +23,9 @@ jobs:
           distribution: 'zulu'
 
       - name: Grant execute permission for gradlew
-        working-directory: ./V2rayNG
+        working-directory: repo/V2rayNG
         run: chmod +x ./gradlew
 
       - name: Build Debug APK
-        working-directory: ./V2rayNG
+        working-directory: repo/V2rayNG
         run: ./gradlew assembleDebug
