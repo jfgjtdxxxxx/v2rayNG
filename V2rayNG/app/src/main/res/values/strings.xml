@@ -239,4 +239,60 @@
     <string name="title_pref_dynamic_socks_port">Enable dynamic local proxy port</string>
     <string name="summary_pref_dynamic_socks_port">Generate a random local proxy port each time the inbound is created</string>
     <string name="title_pref_socks_username">Local proxy username (optional)</string>
-    <
+   <string name="summary_pref_socks_username">Username</string>
+    <string name="title_pref_socks_password">Local proxy password (optional)</string>
+    <string name="summary_pref_socks_password">Password</string>
+
+    <string name="title_pref_allow_invalid_cert">Allow invalid certificate</string>
+    <string name="summary_pref_allow_invalid_cert">Skip certificate verification (NOT recommended)</string>
+
+    <string name="title_pref_vpn_route_bypass_lan">Bypass LAN</string>
+    <string name="summary_pref_vpn_route_bypass_lan">Do not proxy LAN addresses</string>
+
+    <string name="title_pref_vpn_route_bypass_china">Bypass mainland</string>
+    <string name="summary_pref_vpn_route_bypass_china">Do not proxy mainland addresses</string>
+
+    <string name="title_pref_vpn_route_block">Block</string>
+    <string name="summary_pref_vpn_route_block">Block these addresses</string>
+
+    <string name="title_pref_vpn_route_proxy">Proxy</string>
+    <string name="summary_pref_vpn_route_proxy">Proxy these addresses</string>
+
+    <string name="title_pref_vpn_route_direct">Direct</string>
+    <string name="summary_pref_vpn_route_direct">Directly connect to these addresses</string>
+
+    <string name="title_pref_vpn_route_custom">Custom routing</string>
+    <string name="summary_pref_vpn_route_custom">Customize routing rules</string>
+
+    <string name="title_pref_vpn_route_custom_rules">Custom rules</string>
+    <string name="summary_pref_vpn_route_custom_rules">One rule per line</string>
+
+    <string name="title_pref_vpn_route_custom_domains">Custom domains</string>
+    <string name="summary_pref_vpn_route_custom_domains">One domain per line</string>
+
+    <string name="title_pref_vpn_route_custom_ips">Custom IPs</string>
+    <string name="summary_pref_vpn_route_custom_ips">One IP or CIDR per line</string>
+
+    <string name="title_pref_vpn_route_custom_geo">Custom GEO</string>
+    <string name="summary_pref_vpn_route_custom_geo">One GEO per line</string>
+
+    <string name="title_pref_vpn_route_custom_final">Final rule</string>
+    <string name="summary_pref_vpn_route_custom_final">Rule applied when no other rule matches</string>
+
+    <string name="title_pref_vpn_route_custom_mode">Custom mode</string>
+    <string name="summary_pref_vpn_route_custom_mode">Select how custom rules are applied</string>
+
+    <string name="title_pref_vpn_route_custom_mode_proxy">Proxy</string>
+    <string name="title_pref_vpn_route_custom_mode_direct">Direct</string>
+    <string name="title_pref_vpn_route_custom_mode_block">Block</string>
+
+    <string name="title_pref_vpn_route_custom_mode_bypass_lan">Bypass LAN</string>
+    <string name="title_pref_vpn_route_custom_mode_bypass_china">Bypass mainland</string>
+
+    <string name="title_pref_vpn_route_custom_mode_geo">Geo-based</string>
+    <string name="title_pref_vpn_route_custom_mode_domain">Domain-based</string>
+    <string name="title_pref_vpn_route_custom_mode_ip">IP-based</string>
+
+    <string name="title_pref_vpn_route_custom_mode_final">Final</string>
+
+</resources>
