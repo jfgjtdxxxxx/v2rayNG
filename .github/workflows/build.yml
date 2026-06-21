@@ -21,7 +21,7 @@ jobs:
 
       - name: Grant execute permission for gradlew
         working-directory: ./V2rayNG
-        run: chmod +x gradlew
+        run: chmod +x ./gradlew
 
       - name: Build Debug APK
         working-directory: ./V2rayNG
