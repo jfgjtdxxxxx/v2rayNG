@@ -13,4 +13,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "V2RayNG"
-include ':app'
+include(":app")
