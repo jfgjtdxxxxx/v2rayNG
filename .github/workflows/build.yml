@@ -16,7 +16,6 @@ jobs:
       with:
         submodules: 'recursive'
         fetch-depth: '0'
-        path: project
 
     - name: Setup Android SDK
       uses: android-actions/setup-android@v4
@@ -33,35 +32,34 @@ jobs:
         echo "NDK_HOME=$ANDROID_HOME/ndk/29.0.14206865" >> $GITHUB_ENV
         sed -i '10i\
         \
-            ndkVersion = "29.0.14206865"' project/V2rayNG/app/build.gradle.kts
+            ndkVersion = "29.0.14206865"' V2rayNG/app/build.gradle.kts
 
     - name: Restore cached libhevtun
       id: cache-libhevtun-restore
       uses: actions/cache/restore@v5
       with:
-        path: project/libs
-        key: libhevtun-${{ runner.os }}-${{ env.NDK_HOME }}-${{ hashFiles('project/.git/modules/hev-socks5-tunnel/HEAD') }}-${{ hashFiles('project/compile-hevtun.sh') }}
+        path: libs
+        key: libhevtun-${{ runner.os }}-${{ env.NDK_HOME }}-${{ hashFiles('.git/modules/hev-socks5-tunnel/HEAD') }}-${{ hashFiles('compile-hevtun.sh') }}
 
     - name: Build libhevtun
       if: steps.cache-libhevtun-restore.outputs.cache-hit != 'true'
       run: |
-        cd project
         bash compile-hevtun.sh
     
     - name: Save libhevtun
       if: steps.cache-libhevtun-restore.outputs.cache-hit != 'true'
       uses: actions/cache/save@v5
       with:
-        path: project/libs
-        key: libhevtun-${{ runner.os }}-${{ env.NDK_HOME }}-${{ hashFiles('project/.git/modules/hev-socks5-tunnel/HEAD') }}-${{ hashFiles('project/compile-hevtun.sh') }}
+        path: libs
+        key: libhevtun-${{ runner.os }}-${{ env.NDK_HOME }}-${{ hashFiles('.git/modules/hev-socks5-tunnel/HEAD') }}-${{ hashFiles('compile-hevtun.sh') }}
 
     - name: Copy libhevtun
       run: |
-        cp -r project/libs project/V2rayNG/app
+        cp -r libs V2rayNG/app
 
     - name: Fetch AndroidLibXrayLite tag
       run: |
-        cd project/AndroidLibXrayLite
+        cd AndroidLibXrayLite
         CURRENT_TAG=$(git describe --tags --abbrev=0)
         echo "CURRENT_TAG=$CURRENT_TAG" >> $GITHUB_ENV
 
@@ -71,7 +69,7 @@ jobs:
         repository: '2dust/AndroidLibXrayLite'
         tag: ${{ env.CURRENT_TAG }}
         fileName: 'libv2ray.aar'
-        out-file-path: project/V2rayNG/app/libs/
+        out-file-path: V2rayNG/app/libs/
 
     - name: Setup Java
       uses: actions/setup-java@v5
@@ -81,7 +79,7 @@ jobs:
 
     - name: Build APK
       run: |
-        cd project/V2rayNG
+        cd V2rayNG
         echo "sdk.dir=${ANDROID_HOME}" > local.properties
         chmod 755 gradlew
         ./gradlew assembleDebug
@@ -90,4 +88,4 @@ jobs:
       uses: actions/upload-artifact@v7
       with:
         name: debug-apk
-        path: project/V2rayNG/app/build/outputs/apk/debug/*.apk
+        path: V2rayNG/app/build/outputs/apk/debug/*.apk
