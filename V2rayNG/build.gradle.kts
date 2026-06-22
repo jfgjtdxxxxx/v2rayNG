@@ -1,14 +1,4 @@
-plugins {
-    // برای مدیریت لایسنس‌ها (اختیاری)
-    alias(libs.plugins.gradle.license.plugin) apply false
-}
-
-buildscript {
-    dependencies {
-        // برای desugar در سطح پروژه
-        classpath(libs.desugar.jdk.libs)
-    }
-}
+// Root build.gradle.kts
 
 allprojects {
     repositories {
