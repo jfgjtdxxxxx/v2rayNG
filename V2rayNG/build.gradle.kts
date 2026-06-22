@@ -1,10 +1,3 @@
-plugins {
-    alias(libs.plugins.android.application) apply false
-    alias(libs.plugins.android.library) apply false
-}
-
-buildscript {
-    dependencies {
-        classpath(libs.gradle.license.plugin)
-    }
-}
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+android-library = { id = "com.android.library", version.ref = "agp" }
