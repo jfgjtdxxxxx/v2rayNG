@@ -1,6 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
-    kotlin("android")
+    id("org.jetbrains.kotlin.android") version "2.0.0"
 }
 
 android {
@@ -25,6 +25,9 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+        }
+        debug {
+            isMinifyEnabled = false
         }
     }
 
