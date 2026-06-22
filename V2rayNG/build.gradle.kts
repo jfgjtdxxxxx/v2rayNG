@@ -1,9 +1,1 @@
-// Root build.gradle.kts
-
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-        maven("https://jitpack.io")
-    }
-}
+// Root build.gradle.kts — intentionally empty
