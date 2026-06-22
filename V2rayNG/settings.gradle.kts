@@ -3,14 +3,18 @@ pluginManagement {
         google()
         mavenCentral()
         gradlePluginPortal()
+        maven { url = uri("https://jitpack.io") }
     }
 }
+
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()
+        maven { url = uri("https://jitpack.io") }
     }
 }
-rootProject.name = "V2RayNG"
+
+rootProject.name = "V2rayNG"
 include(":app")
